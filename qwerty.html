@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Joonis</title>
+    <script type="text/javascript">
+
+        document.onkeydown = checkKey;
+        function checkKey(e) {
+            e = e || window.event;
+            if (e.keyCode == '38' || e.keyCode == '87') {
+                up();
+            }
+            else if (e.keyCode == '40' || e.keyCode == '83') {
+                down();
+            }
+            else if (e.keyCode == '37' || e.keyCode == '65') {
+                vasakule();
+            }
+            else if (e.keyCode == '39' || e.keyCode == '68') {
+                paremale();
+            }
+        }
+        var x=20, samm=10, y=20;
+        function joonista(){
+            var t=document.getElementById("tahvel");
+            var g=t.getContext("2d");
+            g.clearRect(0, 0, t.width, t.height);
+            g.fillRect(x, y, 50, 50); //x, y, laius, kõrgus
+        }
+        function joonista2(){
+            var t=document.getElementById("tahvel");
+            var g=t.getContext("2d");
+            g.clearRect(0, 0, t.width, t.height);
+            g.fillRect(x, y, 100, 50); //x, y, laius, kõrgus
+        }
+        function vasakule(){
+            x=x-samm;
+            joonista();
+            joonista2();
+        }
+        function paremale(){
+            x=x+samm;
+            joonista();
+        }
+        function up(){
+            y=y-samm;
+            joonista();
+        }
+        function down(){
+            y=y+samm;
+            joonista();
+        }
+    </script>
+</head>
+<body>
+<h1>Joonis</h1>
+<canvas id="tahvel" width="300" height="200"
+        style="background-color:yellow"></canvas><br/>
+<table>
+    <tr>
+        <td></td>
+        <td>
+            <input type="button" value="A" onclick="up()" />
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="button" value="<" onclick="vasakule()" />
+        </td>
+        <td>
+            <input type="button" value="V" onclick="down()" />
+        </td>
+        <td>
+            <input type="button" value=">" onclick="paremale()" />
+        </td>
+
+
+    </tr>
+</table>
+</body>
+</html>
